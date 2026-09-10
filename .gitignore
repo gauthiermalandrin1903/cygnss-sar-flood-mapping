@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# HuggingFace cache
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data — ne pas commiter les tuiles NPZ (trop lourdes)
+# sauf la tuile exemple qui est intentionnellement incluse
+data/example/*.npz
+!data/example/tile_08695.npz
+
+# Outputs générés
+data/example/example_output.png
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
