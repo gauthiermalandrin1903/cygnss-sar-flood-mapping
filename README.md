@@ -40,6 +40,18 @@ Flood observations are organized as temporal triplets (A→B→C), where B is th
 
 ---
 
+## Quick-start output
+
+Running `python example.py` on the included example tile produces:
+
+![Example output](data/example/example_output.png)
+
+*From left to right: CYGNSS watermask (~1 km), U-Net prediction (90 m, IoU = 0.832),
+Sentinel-1 ground truth (90 m), diffusion ensemble mean, pixel-wise uncertainty (σ).*
+*Bangladesh — 2020-08-23.*
+
+---
+
 ## Installation
 
 ```bash
@@ -89,11 +101,17 @@ flood_map, uncertainty = predictor.predict(
 
 ## Data Requirements
 
-| Input | Source | Resolution | Notes |
-|-------|--------|-----------|-------|
-| Sentinel-1 GRD VV | [Copernicus](https://scihub.copernicus.eu/) | ~90 m | Dates A and C, ±5–7 days from target |
-| CYGNSS Berkeley-RWAWC | [UC Berkeley](https://www.hydroshare.org/) | ~1 km | Target date B |
-| MERIT Hydro | [merit-hydro.org](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_Hydro/) | 90 m | DEM, HAND, ACC, TWI |
+| Input | Source | Resolution | Format | Notes |
+|-------|--------|-----------|--------|-------|
+| Sentinel-1 GRD VV | [Google Earth Engine](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S1_GRD) | ~10 m (resampled to 90 m) | GeoTIFF (.tif) | Dates A and C, ±5–7 days from target date B |
+| CYGNSS Berkeley-RWAWC | [NASA PO.DAAC](https://podaac.jpl.nasa.gov/dataset/CYGNSS_L3_LAND_V3.1) | ~1 km | NetCDF (.nc) | Target date B only |
+| MERIT Hydro | [Google Earth Engine](https://developers.google.com/earth-engine/datasets/catalog/MERIT_Hydro_v1_0_1) | 90 m | GeoTIFF (.tif) | DEM, HAND, ACC, TWI — static, download once per region |
+
+### Preprocessing notes
+
+- **Sentinel-1:** Export GRD VV backscatter in dB via Google Earth Engine following standard GRD preprocessing workflows. Resample to 90 m to match the MERIT Hydro grid. Apply a −16 dB threshold to generate binary flood masks.
+- **CYGNSS:** Download daily Level-3 Berkeley-RWAWC files (`cyg.ddmi.YYYY-MM-DD.l3.uc-berkeley-watermask-daily.*.nc`) from NASA PO.DAAC. No preprocessing required.
+- **MERIT Hydro:** Export DEM, HAND, upstream area (ACC), and TWI layers via Google Earth Engine at 90 m resolution cropped to your region of interest. Log-transformation of ACC is applied automatically by the inference script.
 
 ---
 

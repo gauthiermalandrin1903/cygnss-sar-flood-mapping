@@ -25,9 +25,6 @@ env/
 data/example/*.npz
 !data/example/tile_08695.npz
 
-# Outputs générés
-data/example/example_output.png
-
 # OS
 .DS_Store
 Thumbs.db
