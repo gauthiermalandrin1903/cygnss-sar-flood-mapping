@@ -28,7 +28,7 @@ from huggingface_hub import hf_hub_download
 
 from inference.predict import FloodPredictor, load_norm_stats
 
-HF_REPO_ID = "gauthiermalandrin1903/cygnss-sar-flood"
+HF_REPO_ID = "gauthiermalandrin/cygnss-sar-flood-mapping"
 
 # Diffusion parameters (must match training configuration)
 T       = 1000   # total diffusion steps

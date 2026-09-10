@@ -39,7 +39,7 @@ CHANNEL_NAMES = [
     'S1_flood_A', 'S1_flood_C', 'Mean_VV'
 ]
 
-HF_REPO_ID  = "gauthiermalandrin1903/cygnss-sar-flood"
+HF_REPO_ID  = "gauthiermalandrin/cygnss-sar-flood-mapping"
 SAR_THRESHOLD_DB = -16.0  # dB threshold for Sentinel-1 VV open water detection
 TILE_SIZE   = 256
 

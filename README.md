@@ -2,7 +2,7 @@
 
 [![Paper](https://img.shields.io/badge/IEEE%20TGRS-under%20review-orange)](https://doi.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![HuggingFace](https://img.shields.io/badge/🤗-Model%20Weights-orange)](https://huggingface.co/)
+[![HuggingFace](https://img.shields.io/badge/🤗-Model%20Weights-orange)](https://huggingface.co/gauthiermalandrin/cygnss-sar-flood-mapping)
 
 **Authors:** Gauthier Malandrin, Cynthia Gerlein-Safdi (UC Berkeley Civil & Environmental Engineering Department, Water & Carbon Lab)
 
@@ -108,7 +108,7 @@ predictor = FloodPredictor.from_pretrained()
 
 Or download manually:
 ```bash
-# Coming soon
+hf download gauthiermalandrin/cygnss-sar-flood-mapping
 ```
 
 ---
